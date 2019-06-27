@@ -13,30 +13,31 @@
 <div class="container">
     <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="{{route("customers.index")}}">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="{{route("customers.index")}}">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#">Features</a>
-                    <a class="nav-item nav-link" href="#">Pricing</a>
-                    <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-item nav-link active" href="{{route('customers.create')}}">ADD<span class="sr-only">(current)</span></a>
                 </div>
             </div>
         </nav>
     </div>
 </div>
-<div>
-    @yield('index')
-    @yield('edit')
-    @yield('create')
-    @yield('detail')
+<div class="container">
+    <div class="col-12">
+        <div class="row">
+            @yield('index')
+            @yield('edit')
+            @yield('create')
+            @yield('detail')
+            <h5>Vampire</h5>
+        </div>
+    </div>
 </div>
 <br>
-<h5>Vampire</h5>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

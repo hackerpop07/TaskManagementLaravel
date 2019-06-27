@@ -1,6 +1,6 @@
 @extends('home')
 @section('create')
-    <div class="from-group">
+    <div class="col-lg-12">
         <form method="post" class="col-lg-6" action="{{route('customers.store')}}">
             @csrf
             <h1>Thêm mới</h1>

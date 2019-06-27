@@ -1,10 +1,7 @@
 @extends('home')
 @section('index')
-    <a href="{{route('customers.create')}}">
-        <button class="btn btn-primary">Add</button>
-    </a>
     <h1>Danh sách khách hàng</h1>
-    <table border="1" class="thead-light">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>

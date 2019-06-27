@@ -1,6 +1,6 @@
 @extends('home')
 @section('edit')
-    <div class="from-group">
+    <div class="col-lg-12">
         <form method="post" class="col-lg-5" action="{{route('customers.update',["id"=>$customer->id])}}">
             @csrf
             <h1>Chỉnh sửa</h1>
