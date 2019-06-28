@@ -54,17 +54,15 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($id);
         $customer->name = $request->name;
-        $customer->phone = $request->phone;
         $customer->email = $request->email;
+        $customer->phone = $request->phone;
         $file = $request->inputFile;
         if (!$request->hasFile('inputFile')) {
             $customer->image = $file;
         } else {
-            $fileExtension = $file->getClientOriginalExtension();
-            $fileName = $file->getClientOriginalName();
-            $newFileName = "$fileName.$fileExtension";
-            $file->storeAs('public/images', $newFileName);
-            $customer->image = $newFileName;
+//          php artisan route:list
+            $path = $file->store('images', 'public');
+            $customer->image = $path;
         }
         $customer->save();
         return redirect()->route('customers.index');

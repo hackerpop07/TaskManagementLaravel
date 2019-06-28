@@ -10,10 +10,10 @@
             <br>
             <input class="form-control" type="email" name="email" placeholder="email">
             <br>
-                <input type="file"
-                       class="form-control-file"
-                       id="inputFile"
-                       name="inputFile">
+            <input type="file"
+                   class="form-control-file"
+                   id="inputFile"
+                   name="inputFile">
             <button class="btn btn-warning" name="add">ADD</button>
         </form>
     </div>

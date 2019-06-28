@@ -14,12 +14,14 @@
         </thead>
         @forelse($customers as $customer)
             <tr>
-                <th>{{ $customer->id }}</th>
-                <th><a href="{{route('customers.show',["id"=>$customer->id])}}">{{ $customer->name }}</a></th>
-                <th>{{ $customer->phone }}</th>
-                <th>{{ $customer->email }}</th>
-                <th><img src="{{ asset('storage/' . $customer->image) }}" alt="" style="width: 150px"></th>
-                <th><a href="{{route('customers.edit',["id"=>$customer->id])}}">
+                <th class="align-middle">{{ $customer->id }}</th>
+                <th class="align-middle"><a
+                        href="{{route('customers.show',["id"=>$customer->id])}}">{{ $customer->name }}</a></th>
+                <th class="align-middle">{{ $customer->phone }}</th>
+                <th class="align-middle">{{ $customer->email }}</th>
+                <th class="align-middle"><img src="{{ asset('storage/' . $customer->image) }}" alt=""
+                                              style="width: 50px"></th>
+                <th class="align-middle"><a href="{{route('customers.edit',["id"=>$customer->id])}}">
                         <button class="btn btn-primary">Edit</button>
                     </a>
                     <a href="{{route('customers.destroy',["id"=>$customer->id])}}">

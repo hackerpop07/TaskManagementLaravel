@@ -1,7 +1,10 @@
 @extends('home')
 @section('con')
     <div class="col-lg-12">
-        <form method="post" class="col-lg-5" action="{{route('customers.update',["id"=>$customer->id])}}">
+        <form method="post"
+              class="col-lg-5"
+              action="{{route('customers.update',["id"=>$customer->id])}}"
+              enctype="multipart/form-data">
             @csrf
             <h1>Chỉnh sửa</h1>
             <input class="form-control"
