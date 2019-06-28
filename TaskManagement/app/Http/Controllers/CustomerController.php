@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::all();
+        $customers = Customer::paginate(6);
         return view("index", compact('customers'));
     }
 
@@ -24,8 +25,19 @@ class CustomerController extends Controller
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->phone = $request->phone;
+        $file = $request->inputFile;
+        if (!$request->hasFile('inputFile')) {
+            $customer->image = $file;
+        } else {
+            $fileExtension = $file->getClientOriginalExtension();
+            $fileName = $file->getClientOriginalName();
+            $newFileName = "$fileName.$fileExtension";
+            $file->move('public/images', $newFileName);
+            $customer->image = $newFileName;
+        }
         $customer->save();
-        return redirect()->route('customers.index');
+        $message = "Tạo Customer $request->inputTitle thành công!";
+        return redirect()->route('customers.index', compact('message'));
     }
 
     public function show($id)
@@ -46,13 +58,24 @@ class CustomerController extends Controller
         $customer->name = $request->name;
         $customer->phone = $request->phone;
         $customer->email = $request->email;
+        $file = $request->inputFile;
+        if (!$request->hasFile('inputFile')) {
+            $customer->image = $file;
+        } else {
+            $fileExtension = $file->getClientOriginalExtension();
+            $fileName = $file->getClientOriginalName();
+            $newFileName = "$fileName.$fileExtension";
+            $file->storeAs('public/images', $newFileName);
+            $customer->image = $newFileName;
+        }
         $customer->save();
         return redirect()->route('customers.index');
     }
 
     public function destroy($id)
     {
-        Customer::destroy($id);
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
         return redirect()->route("customers.index");
     }
 }

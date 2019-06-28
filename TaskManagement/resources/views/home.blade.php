@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -20,7 +22,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="{{route('customers.create')}}">ADD<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active"
+                       href="{{route('customers.create')}}">ADD</a>
                 </div>
             </div>
         </nav>
@@ -29,15 +32,16 @@
 <div class="container">
     <div class="col-12">
         <div class="row">
-            @yield('index')
-            @yield('edit')
-            @yield('create')
-            @yield('detail')
-            <h5>Vampire</h5>
+            @yield('con')
         </div>
     </div>
 </div>
 <br>
+<div class="container">
+    <div class="col-12">
+        <h5>Vampire</h5>
+    </div>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
