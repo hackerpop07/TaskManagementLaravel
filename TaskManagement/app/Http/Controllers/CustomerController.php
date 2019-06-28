@@ -29,11 +29,9 @@ class CustomerController extends Controller
         if (!$request->hasFile('inputFile')) {
             $customer->image = $file;
         } else {
-            $fileExtension = $file->getClientOriginalExtension();
-            $fileName = $file->getClientOriginalName();
-            $newFileName = "$fileName.$fileExtension";
-            $file->move('public/images', $newFileName);
-            $customer->image = $newFileName;
+//          php artisan route:list
+            $path = $file->store('images', 'public');
+            $customer->image = $path;
         }
         $customer->save();
         $message = "Tạo Customer $request->inputTitle thành công!";

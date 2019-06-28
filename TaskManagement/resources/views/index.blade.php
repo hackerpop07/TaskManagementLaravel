@@ -18,7 +18,7 @@
                 <th><a href="{{route('customers.show',["id"=>$customer->id])}}">{{ $customer->name }}</a></th>
                 <th>{{ $customer->phone }}</th>
                 <th>{{ $customer->email }}</th>
-                <th>{{ $customer->image }}</th>
+                <th><img src="{{ asset('storage/' . $customer->image) }}" alt="" style="width: 150px"></th>
                 <th><a href="{{route('customers.edit',["id"=>$customer->id])}}">
                         <button class="btn btn-primary">Edit</button>
                     </a>

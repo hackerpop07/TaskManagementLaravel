@@ -13,7 +13,7 @@ class CustomerTableSeeder extends Seeder
             $customer->name = str_random(10);
             $customer->phone = mt_rand(100000000, 999999999);
             $customer->email = str_random(10) . '@gmail.com';
-            $customer->image = str_random(10) . '.jpg';
+            $customer->image = 'images/' . '4296430_GirlXinh-Part8.png';
             $customer->save();
         }
     }
