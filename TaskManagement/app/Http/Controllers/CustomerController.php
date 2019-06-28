@@ -29,7 +29,7 @@ class CustomerController extends Controller
         if (!$request->hasFile('inputFile')) {
             $customer->image = $file;
         } else {
-//          php artisan route:list
+//          php artisan storage:link
             $path = $file->store('images', 'public');
             $customer->image = $path;
         }
@@ -60,7 +60,7 @@ class CustomerController extends Controller
         if (!$request->hasFile('inputFile')) {
             $customer->image = $file;
         } else {
-//          php artisan route:list
+//          php artisan storage:link
             $path = $file->store('images', 'public');
             $customer->image = $path;
         }
