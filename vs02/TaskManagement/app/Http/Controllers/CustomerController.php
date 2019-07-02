@@ -34,7 +34,7 @@ class CustomerController extends Controller
         $idCity = $request->input('city_id');
         $cityFilter = City::findOrFail($idCity);
         $customers = Customer::where('city_id', $cityFilter->id)->paginate(6);
-        $totalCustomerFilter = count($customers);
+        $totalCustomerFilter = count(Customer::where('city_id', $cityFilter->id)->get);
         $cities = City::all();
         return view('index', compact('customers', 'cities', 'totalCustomerFilter', 'cityFilter'));
     }
