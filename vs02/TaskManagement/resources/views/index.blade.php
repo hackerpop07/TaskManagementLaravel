@@ -35,6 +35,7 @@
             <th>Họ và tên</th>
             <th>Số điện thoại</th>
             <th>Email</th>
+            <th>Birth Day</th>
             <th>City</th>
             <th>Image</th>
             <th>Thao tác</th>
@@ -47,6 +48,7 @@
                         href="{{route('customers.show',["id"=>$customer->id])}}">{{ $customer->name }}</a></th>
                 <th class="align-middle">{{ $customer->phone }}</th>
                 <th class="align-middle">{{ $customer->email }}</th>
+                <th class="align-middle">{{ $customer->date_of_birth }}</th>
                 <th class="align-middle">{{ $customer->city->name }}</th>
                 <th class="align-middle"><img src="{{ asset('storage/' . $customer->image) }}" alt=""
                                               style="width: 50px"></th>

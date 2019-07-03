@@ -12,48 +12,16 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{route("customers.index")}}">Home</a>
-            <a class="navbar-brand" href="{{route("cities.index")}}">City</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active"
-                       href="{{route('customers.create')}}">ADD</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
+@include('head')
+
 <div class="container">
     <div class="col-12">
         <div class="row">
             @yield('content')
-            {{--Tìm kiếm--}}
-            <div class="col-6 ">
-                <form class="navbar-form navbar-right" action="{{route('customers.search')}}">
-                    @csrf
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="keyword" placeholder="Search">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-default">Tìm kiếm</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+
         </div>
     </div>
 </div>
-
 <br>
 <div class="container">
     <div class="col-12">

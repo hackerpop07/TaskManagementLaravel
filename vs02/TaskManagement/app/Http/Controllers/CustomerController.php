@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\Customer;
+use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -34,7 +36,7 @@ class CustomerController extends Controller
         $idCity = $request->input('city_id');
         $cityFilter = City::findOrFail($idCity);
         $customers = Customer::where('city_id', $cityFilter->id)->paginate(6);
-        $totalCustomerFilter = count(Customer::where('city_id', $cityFilter->id)->get);
+        $totalCustomerFilter = count($customers);
         $cities = City::all();
         return view('index', compact('customers', 'cities', 'totalCustomerFilter', 'cityFilter'));
     }
@@ -45,12 +47,13 @@ class CustomerController extends Controller
         return view("create", compact('cities'));
     }
 
-    public function store(Request $request)
+    public function store(StoreCustomerRequest $request)
     {
         $customer = new  Customer();
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->phone = $request->phone;
+        $customer->date_of_birth = $request->date_of_birth;
         $customer->city_id = $request->input('city_id');
         $file = $request->inputFile;
         if (!$request->hasFile('inputFile')) {
@@ -78,7 +81,7 @@ class CustomerController extends Controller
         return view('edit', compact('customer', 'cities'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCustomerRequest $request, $id)
     {
         $customer = Customer::findOrFail($id);
         $customer->name = $request->name;
